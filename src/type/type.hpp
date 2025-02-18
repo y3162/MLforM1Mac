@@ -32,4 +32,47 @@ namespace Type
 
         std::string to_string() const;
     };
+
+    class RowVector
+    {
+    private:
+        Shape shape;
+        data_t *elems;
+
+        void calloc_elems();
+
+        void reshape(const Shape&);
+        void reshape(size_t);
+
+    public:
+        RowVector();
+        RowVector(size_t);
+        RowVector(const Shape&);
+        RowVector(const RowVector&);
+        RowVector(RowVector&&) noexcept;
+        ~RowVector();
+
+        Shape get_shape() const;
+
+        RowVector& operator=(const RowVector&);
+        data_t& operator[](size_t);
+        const data_t& operator[](size_t) const;
+        RowVector operator+() const;
+        RowVector operator+(const RowVector&) const;
+        RowVector& operator+=(const RowVector&);
+        RowVector operator+(data_t) const;
+        RowVector& operator+=(data_t);
+        friend RowVector operator+(data_t, const RowVector&);
+        RowVector operator-() const;
+        RowVector operator-(const RowVector&) const;
+        RowVector& operator-=(const RowVector&);
+        RowVector operator-(data_t) const;
+        RowVector& operator-=(data_t);
+        friend RowVector operator-(data_t, const RowVector&);
+        RowVector operator*(data_t) const;
+        friend RowVector operator*(data_t, RowVector&);
+        RowVector& operator*=(data_t);
+
+        std::string to_string() const;
+    };
 }

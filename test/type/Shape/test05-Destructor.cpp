@@ -19,7 +19,7 @@ int main(void)
 
     std::cout << S1.to_string() << std::endl;
     std::cout << S2->to_string() << std::endl;
-    std::cout << S3->to_string() << std::endl;
+    //std::cout << S3->to_string() << std::endl;
 
     return 0;
 }

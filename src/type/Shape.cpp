@@ -14,13 +14,13 @@ size_t *elems
 */
 
 Shape::Shape()
-:dim(0), elems(nullptr)
+: dim(0), elems(nullptr)
 {
     LOG_SHAPE("Shape()");
 }
 
 Shape::Shape(size_t dim, ...)
-:dim(dim)
+: dim(dim)
 {
     LOG_SHAPE("Shape(size_t, ...)");
 
@@ -35,7 +35,7 @@ Shape::Shape(size_t dim, ...)
 }
 
 Shape::Shape(const Shape &shape)
-:dim(shape.dim)
+: dim(shape.dim)
 {
     LOG_SHAPE("Shape(const Shape&)");
 
@@ -47,12 +47,9 @@ Shape::Shape(const Shape &shape)
 }
 
 Shape::Shape(Shape &&shape) noexcept
-:dim(shape.dim), elems(shape.elems)
+: dim(std::exchange(shape.dim, 0)), elems(std::exchange(shape.elems, nullptr))
 {
     LOG_SHAPE("Shape(const Shape&&)");
-
-    shape.dim = 0;
-    shape.elems = nullptr;
 }
 
 Shape::~Shape()
