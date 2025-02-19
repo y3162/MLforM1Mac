@@ -49,7 +49,7 @@ Shape::Shape(const Shape &shape)
 Shape::Shape(Shape &&shape) noexcept
 : dim(std::exchange(shape.dim, 0)), elems(std::exchange(shape.elems, nullptr))
 {
-    LOG_SHAPE("Shape(const Shape&&)");
+    LOG_SHAPE("Shape(Shape&&)");
 }
 
 Shape::~Shape()

@@ -41,9 +41,6 @@ namespace Type
 
         void calloc_elems();
 
-        void reshape(const Shape&);
-        void reshape(size_t);
-
     public:
         RowVector();
         RowVector(size_t);
@@ -53,6 +50,8 @@ namespace Type
         ~RowVector();
 
         Shape get_shape() const;
+        void reshape(const Shape&);
+        void reshape(size_t);
 
         RowVector& operator=(const RowVector&);
         data_t& operator[](size_t);
@@ -72,6 +71,53 @@ namespace Type
         RowVector operator*(data_t) const;
         friend RowVector operator*(data_t, RowVector&);
         RowVector& operator*=(data_t);
+
+        std::string to_string() const;
+    };
+
+    class Matrix
+    {
+    private:
+        Shape shape;
+        RowVector **rows;
+
+        void calloc_rows();
+
+    public:
+        Matrix();
+        Matrix(size_t, size_t);
+        Matrix(const Shape&);
+        Matrix(const Matrix&);
+        Matrix(Matrix&&) noexcept;
+        ~Matrix();
+
+        static Matrix zeros(const Shape&);
+        static Matrix ones(const Shape&);
+
+        Shape get_shape() const;
+        void reshape(const Shape&);
+        void reshape(size_t, size_t);
+
+        Matrix& operator=(const Matrix&);
+        RowVector& operator[](size_t);
+        const RowVector& operator[](size_t) const;
+        Matrix operator+() const;
+        Matrix operator+(const Matrix&) const;
+        Matrix& operator+=(const Matrix&);
+        Matrix operator+(data_t) const;
+        Matrix& operator+=(const data_t);
+        friend Matrix operator+(data_t, Matrix&);
+        Matrix operator-() const;
+        Matrix operator-(const Matrix&) const;
+        Matrix& operator-=(const Matrix&);
+        Matrix operator-(data_t) const;
+        Matrix& operator-=(const data_t);
+        friend Matrix operator-(data_t, Matrix&);
+        Matrix operator*(const Matrix&) const;
+        Matrix& operator*=(const Matrix&);
+        Matrix operator*(data_t) const;
+        Matrix& operator*=(const data_t);
+        friend Matrix operator*(data_t, const Matrix&);
 
         std::string to_string() const;
     };

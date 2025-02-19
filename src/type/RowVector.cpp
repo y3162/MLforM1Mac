@@ -52,7 +52,7 @@ RowVector::RowVector(const RowVector &rowvec)
     }
 }
 
-RowVector::RowVector(RowVector&& rowvec) noexcept
+RowVector::RowVector(RowVector &&rowvec) noexcept
 : shape(std::move(rowvec.shape)), elems(std::exchange(rowvec.elems, nullptr))
 {
     LOG_ROWVECTOR("RowVector(RowVector&&)");
@@ -81,6 +81,11 @@ void RowVector::calloc_elems()
     }
 }
 
+Shape RowVector::get_shape() const
+{
+    return shape;
+}
+
 void RowVector::reshape(const Shape &shape)
 {
     reshape(shape[0]);
@@ -98,11 +103,6 @@ void RowVector::reshape(size_t L)
     }
 
     shape = Shape(1, L);
-}
-
-Shape RowVector::get_shape() const
-{
-    return shape;
 }
 
 std::string RowVector::to_string() const

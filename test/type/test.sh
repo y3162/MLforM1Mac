@@ -1,11 +1,16 @@
 #!/bin/bash
 
-chmod +x Shape/test.sh
 cd Shape
+chmod +x test.sh
 ./test.sh
 cd ..
 
-chmod +x RowVector/test.sh
 cd RowVector
+chmod +x test.sh
+./test.sh
+cd ..
+
+cd Matrix
+chmod +x test.sh
 ./test.sh
 cd ..

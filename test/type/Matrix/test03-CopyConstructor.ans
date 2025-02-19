@@ -1,0 +1,23 @@
+[DEBUG] Matrix(size_t, size_t)
+[DEBUG] Matrix(const Matrix&)
+[DEBUG] Matrix(const Matrix&)
+[DEBUG] Matrix(const Matrix&)
+[DEBUG] Matrix(size_t, size_t)
+[DEBUG] ~Matrix()
+[DEBUG] Matrix(size_t, size_t)
+[DEBUG] ~Matrix()
+[DEBUG] Matrix(size_t, size_t)
+[DEBUG] ~Matrix()
+[[0.000000]]
+[[0.000000, 0.000000],
+ [0.000000, 0.000000]]
+[[0.000000, 0.000000, 0.000000],
+ [0.000000, 0.000000, 0.000000],
+ [0.000000, 0.000000, 0.000000]]
+[[0.000000, 0.000000, 0.000000, 0.000000],
+ [0.000000, 0.000000, 0.000000, 0.000000],
+ [0.000000, 0.000000, 0.000000, 0.000000],
+ [0.000000, 0.000000, 0.000000, 0.000000]]
+[DEBUG] ~Matrix()
+[DEBUG] ~Matrix()
+[DEBUG] ~Matrix()
